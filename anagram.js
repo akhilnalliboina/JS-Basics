@@ -13,9 +13,29 @@ console.log(findAnagram("!there","heret!"))
 
 
 
+//Alternative solution with O(n)
 
-
-
+function validAnagram(str1,str2){
+    // add whatever parameters you deem necessary - good luck!
+    // compare length
+    if (str1.length!=str2.length){
+        return false
+    }
+    // transform each string into new object
+    var ostr1={}; var ostr2={}
+    for (let char of str1){
+        ostr1[char]=++ostr1[char]||1
+    }
+    for (let char of str2){
+        ostr2[char]=++ostr2[char]||1
+    }
+    // compare the strings
+    for (let char in ostr1){
+          if(ostr1[char]!=ostr2[char]){return false}
+    } 
+    // return true or false 
+    return true
+  }
 
 
 
