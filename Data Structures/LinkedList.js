@@ -57,6 +57,7 @@ class SingleLinkedList {
   }
 
   get(index) {
+    // check if the given index is valid
     if (index < 0 || index > this.length || this.isEmpty()) {
       return null;
     } else if (index == 0) {
@@ -73,6 +74,38 @@ class SingleLinkedList {
       return resultNode;
     }
   }
+  delete(index) {
+    if (index < 0 || index > this.length || this.isEmpty()) {
+      return null;
+    } else if (index == 0) {
+      if (this.length == 1) {
+        this.head = null;
+        this.tail = null;
+        this.length--;
+      } else {
+        this.head = this.head.next;
+        this.length--;
+      }
+    } else if (index == this.length - 1) {
+      this.pop();
+      this.length--;
+    } else {
+      let currentNode = this.head;
+      let deleteNode = null;
+      let nextToDeleteNode = null;
+      let prevToDeleteNode = null;
+      let iterator = 0;
+      while (iterator < index) {
+        iterator++;
+        prevToDeleteNode = currentNode;
+        deleteNode = currentNode.next;
+        nextToDeleteNode = deleteNode.next;
+        currentNode = currentNode.next;
+      }
+      prevToDeleteNode.next = nextToDeleteNode;
+      this.length--;
+    }
+  }
 }
 
 const list = new SingleLinkedList();
@@ -81,6 +114,5 @@ list.push(0);
 list.push(1);
 list.push(2);
 console.log(list);
-console.log(list.isEmpty());
-console.log(list.pop());
-console.log(list.get(1));
+list.delete(1);
+console.log(list);
