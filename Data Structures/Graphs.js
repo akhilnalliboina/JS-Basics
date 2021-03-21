@@ -25,12 +25,22 @@ class Graph {
     }
     return `An edge between ${node1.value} and ${node2.value} was added`;
   }
+  remNode(value) {
+    this.nodes = this.nodes.filter((value) => this.value !== value);
+    this.nodes.forEach((node) => {
+      node.edges = node.edges.filter((node) => node.value !== value);
+    });
+  }
 }
 
 const graph = new Graph();
 graph.addNode("Ramanaiah");
 graph.addNode("Akhil");
-graph.undirected = true;
+graph.addNode("Rakesh");
+graph.undirected = false;
 console.log(graph.addEdge("Ramanaiah", "Akhil"));
+console.log(graph.addEdge("Ramanaiah", "Rakesh"));
 console.log(graph.getNode("Ramanaiah"));
 console.log(graph.getNode("Akhil"));
+console.log(graph.remNode("Rakesh"));
+console.log(graph.getNode("Ramanaiah"));
