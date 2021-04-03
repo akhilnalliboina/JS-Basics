@@ -5,6 +5,7 @@ class Node {
     this.leftChild = null;
   }
 }
+
 class BinarySearchTree {
   constructor() {
     this.root = null;
