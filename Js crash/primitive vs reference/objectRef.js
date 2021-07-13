@@ -12,6 +12,6 @@ const newPersonSpread = {
   ...Person,
 };
 
-Person.name = "Akhil"; //doesnt effect the Person as the value of name is alread copied as "Akhil N"
+Person.name = "Akhil"; //doesn't effect the Person as the value of name is alread copied as "Akhil N"
 
 console.log(newPersonSpread);
